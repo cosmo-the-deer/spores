@@ -1,13 +1,22 @@
-import time
 import random
+import time
 import os
 
-def clear_screen():
-    # Clear the console screen
-    os.system('clear')
-    print_title()
+
+def gyn():
+    # Ask the user for confirmation
+    # and return True for 'y' and False for 'n'
+
+    y_n = ''
+
+    while y_n != 'y' and y_n != 'n':
+        reset_screen()
+        print('Are you sure? y/n')
+        y_n = input().lower()
+    return y_n == 'y'
 
 def print_title():
+    # Print the title of the game
     print('''
  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. 
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
@@ -22,29 +31,67 @@ def print_title():
  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' 
 ''')
 
-def help():
-    clear_screen()
+def reset_screen():
+    # Clear the console screen
+    # This works for both Windows and Unix-like systems
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print_title()
+
+def print_help():
+    reset_screen()
     print('''
 'help' - Show this help message
-'quit' - Exit the game    
-'save' - Save the game
-'load_fix' - run this if for some reason the game did not load correctly.
-'harvest' - Harvest the crops
-'tile' prints the title of the game
+'harvest' - harvest all plots
+'buy' - buy a plot
+'sell' - sell a plot
+'upgrades' - show available upgrades
+'load' if for some reason you need to load a save file
+'quit' - quit the game
+'clear' - clear the screen
+'stats' - show your stats
 ''')
     
-
 def main():
-    print()
-    
-    main_input = input('> ').lower()
-    if main_input == 'help':
-        help()
-    elif main_input == 'clear':
-        clear_screen()
+    reset_screen()
+    main_input = ''
 
-    else:
-        print("Invalid command. Type 'help' for a list of commands.")
+    while True:
 
-clear_screen()
+        main_input = input('> ').lower()
+
+        if main_input == 'help':
+            print_help()
+        elif main_input == 'quit':
+            if gyn():
+                os.system('cls' if os.name == 'nt' else 'clear')
+                exit()
+            else:
+                reset_screen()
+        elif main_input == 'clear':
+            reset_screen()
+        elif main_input == 'hug':
+            print('you hug mylo')
+            time.sleep(1)
+            print('mylo hugs you back')
+            time.sleep(2)
+            reset_screen()
+        else:
+            print('invalid command type "help" to see a list of commands')
+            time.sleep(1)
+            reset_screen()
+        
+
+
+
+        # Add more commands here
+        # For example:
+        # elif main_input == 'harvest':
+        #     harvest_all_plots()
+        # elif main_input == 'buy':
+        #     buy_plot()
+        # elif main_input == 'sell':
+        #     sell_plot()
+        # elif main_input == 'upgrades':
+        #     show_upgrades()
+
 main()
