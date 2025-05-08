@@ -12,7 +12,7 @@ def gyn():
     while y_n != 'y' and y_n != 'n':
         reset_screen()
         print('Are you sure? y/n')
-        y_n = input().lower()
+        y_n = input('>').lower()
     return y_n == 'y'
 
 def print_title():
