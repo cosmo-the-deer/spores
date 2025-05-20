@@ -1,4 +1,5 @@
-0
-1
-0
-1
+spores: 10
+spores per harvest: 1
+spores bonus harvest: 0
+spores per multiplyer: 10
+has loaded game: True

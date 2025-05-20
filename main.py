@@ -10,7 +10,13 @@ spores_per_multiplyer = 1
 #loads the game data from data.txt
 def load():
     global spores, spores_per_harvest, spores_bonus_harvest, spores_per_multiplyer
-
+    file = open('data.txt', 'r')
+    data = file.readlines()
+    file.close()
+    spores = int(data[0].replace('spores:', '').strip())
+    spores_per_harvest = int(data[1].replace('spores per harvest:', '').strip())
+    spores_bonus_harvest = int(data[2].replace('spores bonus harvest:', '').strip())
+    spores_per_multiplyer = int(data[3].replace('spores per multiplyer:', '').strip())
 
 def help():
     print('this is the help menu')
@@ -57,9 +63,22 @@ def main():
             harvest()
         elif command == 'info':
             info()
+        elif command == 'exit':
+            print('exiting...')
+            time.sleep(1)
+            clear_screen()
+            exit()
+        elif command == 'load':
+            print('loading...')
+            load()
+            time.sleep(1)
+            clear_screen()
+            intro()
+            print('loaded successfully')
         else:
             print(command + ' is not a valid command')
 
+load()
 clear_screen()
 intro()
 main()
