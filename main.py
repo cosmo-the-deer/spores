@@ -6,10 +6,12 @@ spores = 0
 spores_per_harvest = 1
 spores_bonus_harvest = 0
 spores_per_multiplyer = 1
+new_game = True
+farm_name = ''
 
 #loads the game data from data.txt
 def load():
-    global spores, spores_per_harvest, spores_bonus_harvest, spores_per_multiplyer
+    global spores, spores_per_harvest, spores_bonus_harvest, spores_per_multiplyer, new_game
     file = open('data.txt', 'r')
     data = file.readlines()
     file.close()
@@ -17,14 +19,31 @@ def load():
     spores_per_harvest = int(data[1].replace('spores per harvest:', '').strip())
     spores_bonus_harvest = int(data[2].replace('spores bonus harvest:', '').strip())
     spores_per_multiplyer = int(data[3].replace('spores per multiplyer:', '').strip())
+    new_game = data[4].replace('new game:', '').strip().lower() == 'true'
 
 def help():
     print('this is the help menu')
 
 def intro():
-    print('SPORES')
-    print()
-    print()
+    global new_game, farm_name
+    print('welcome to spores.')
+    if new_game == True:
+        farm_confirmed = False
+        while farm_confirmed == False:
+            print('please enter the name of your farm')
+            farm_name = input('$=')
+            print('is this the correct name? (y/n)')
+            confirm = input('$=').lower()
+            if confirm == 'y':
+                farm_confirmed = True
+            elif confirm == 'n':
+                farm_confirmed = False
+            else:
+                print('invalid input')
+        print('Lets start the game!')
+        new_game = False
+    else:   
+        print('welcome back to your farm ' + farm_name)
 
 def clear_screen():
     if os.name == 'nt':
@@ -47,6 +66,7 @@ def info():
     print('spores per harvest: ' + str(spores_per_harvest))
     print('spores per harvest bonus: ' + str(spores_bonus_harvest))
     print('spores multiplyer: ' + str(spores_per_multiplyer))
+    print('farm name: ' + farm_name)
 def main():
     while True:
         #gets the players input and stores it in the command var
@@ -73,7 +93,6 @@ def main():
             load()
             time.sleep(1)
             clear_screen()
-            intro()
             print('loaded successfully')
         else:
             print(command + ' is not a valid command')
