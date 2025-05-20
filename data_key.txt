@@ -1,0 +1,4 @@
+spores
+spores per harvest
+spores bonus harvest
+spores per multiplyer
