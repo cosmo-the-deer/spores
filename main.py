@@ -46,8 +46,10 @@ def save():
     file.write('new game: ' + ('1' if new_game else '0')  + '\n')
     file.close()
     print('game saved successfully')
-def help():
-    print('this is the help menu')
+
+def print_file(file):
+    with open(file, 'r') as f:
+        print(f.read())
 
 def intro():
     global new_game, farm_name
@@ -65,10 +67,11 @@ def intro():
                 farm_confirmed = False
             else:
                 print('invalid input')
-        print('Lets start the game!')
+        print('your farm name is called: ' + farm_name)
+        save()
         new_game = False
     else:   
-        print('welcome back to your farm ' + farm_name)
+        print('welcome back to your farm: ' + farm_name)
 
 def clear_screen():
     if os.name == 'nt':
@@ -104,7 +107,7 @@ def main():
         print()
     
         if command == 'help':
-            help()
+            print_file('commands.txt')
         elif command == 'intro':
             intro()
         elif command == 'clear':
@@ -138,6 +141,9 @@ def main():
                 print('invalid input. exiting...')
                 time.sleep(1)
                 clear_screen()
+        elif command == 'license':
+            print_file('LICENSE')
+
         else:
             print(command + ' is not a valid command')
 

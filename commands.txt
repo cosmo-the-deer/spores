@@ -19,3 +19,5 @@ save:
     Saves your game data.
 new game:
     Starts a new game (asks for confirmation).
+license:
+    Prints the license information for the game.
