@@ -4,6 +4,7 @@
 # dont ask how the new_game function works i have no idea
 # spaghetti code
 
+#if you can switch the txt files to json files that would be great
 
 # importing the libraries needed for the game
 import random
@@ -144,7 +145,9 @@ def main():
         print()
     
         if command == 'help':
-            print_file('commands.txt')
+            print_file('commanI can't stop laughing, I get an overwhelming sence of joy just knowing that all this annoying painful and crazy stressful shit will just be gone so fast and easy it's painful but the thought is so relieving it bring weight off my shoulders thinking about it it makes me genuinely happy
+[10:28 am]
+ds.txt')
         elif command == 'intro':
             intro()
         elif command == 'clear':
