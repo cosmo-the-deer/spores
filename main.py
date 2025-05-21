@@ -9,8 +9,8 @@ spores_per_multiplyer = 1
 new_game = True
 farm_name = ''
 
-#loads the game data from data.txt
 def load():
+    #loads the game data from data.txt
     global spores, spores_per_harvest, spores_bonus_harvest, spores_per_multiplyer, new_game
     file = open('data.txt', 'r')
     data = file.readlines()
@@ -54,8 +54,8 @@ def clear_screen():
         #replace with a raise error
         print('your system type cannot be cleared')
 
-#this will be used for harvesting the sporst
 def harvest():
+    #harvests the spores and adds them to the total
     global spores, spores_bonus_harvest, spores_per_harvest, spores_per_multiplyer
     spores_harvested = spores_per_harvest + spores_bonus_harvest * spores_per_multiplyer
     spores = spores + spores_per_harvest + spores_bonus_harvest * spores_per_multiplyer
@@ -67,12 +67,17 @@ def info():
     print('spores per harvest bonus: ' + str(spores_bonus_harvest))
     print('spores multiplyer: ' + str(spores_per_multiplyer))
     print('farm name: ' + farm_name)
+    print('new game: ' + str(new_game))
+
 def main():
     while True:
-        #gets the players input and stores it in the command var
+        #gets the players input and stores it in the variable "command"
+        #then checks i it matches any of the commands
+        #if it does, it runs the function associated with that command
+        #if it does not, it prints an error message
         command = input('$=').lower()
         print()
-
+    
         if command == 'help':
             help()
         elif command == 'intro':

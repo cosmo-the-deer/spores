@@ -2,4 +2,4 @@ spores: 100
 spores per harvest: 1
 spores bonus harvest: 0
 spores per multiplyer: 10
-new game: false
+new game: true
