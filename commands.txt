@@ -1,0 +1,21 @@
+Spores Game Commands
+====================
+
+help:
+    Prints the help menu.
+intro:
+    Starts the game introduction or welcomes you back to your farm.
+clear:
+    Clears the terminal screen.
+harvest:
+    Harvests spores and adds them to your total.
+info:
+    Prints your current spores, harvest stats, and farm name.
+exit:
+    Exits the game after saving.
+load:
+    Loads your game data.
+save:
+    Saves your game data.
+new game:
+    Starts a new game (asks for confirmation).
