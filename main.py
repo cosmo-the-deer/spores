@@ -1,7 +1,18 @@
+# made by cosmo_the_deer
+# i am sorry for the mess of code
+# thought i would make a game in python
+# dont ask how the new_game function works i have no idea
+# spaghetti code
+
+
+# importing the libraries needed for the game
 import random
 import time
 import os
 
+
+# initializing the variables needed for the game but they are stored in a file
+# they are initialized here so they can be used in the functions to load and save the game
 spores = 0
 spores_per_harvest = 1
 spores_bonus_harvest = 0
@@ -9,8 +20,10 @@ spores_per_multiplyer = 1
 new_game = True
 farm_name = ''
 
+
+# if you are editing this to make it better please find a way to reload instead of exiting
+# this resets the var and saves it to the data.txt file
 def start_new_game():
-    #starts a new game
     global spores, spores_per_harvest, spores_bonus_harvest, spores_per_multiplyer, new_game
     spores = 0
     spores_per_harvest = 1
@@ -21,8 +34,11 @@ def start_new_game():
     save()
     exit()
 
+
+# this sets the variables to the values in the data.txt file
+# it can be called at the start of the game to load the game
+# these are global variables so they can be used in the functions
 def load():
-    #loads the game data from data.txt
     global spores, spores_per_harvest, spores_bonus_harvest, spores_per_multiplyer, new_game, farm_name
     file = open('data.txt', 'r')
     data = file.readlines()
@@ -34,8 +50,13 @@ def load():
     farm_name = data[4].replace('farm name:', '').strip()
     new_game = data[5].replace('new game:', '').strip() == '1'
 
+
+# this function is used to save the game data to the data.txt file
+# it is called when the game is exited or when the player wants to save the game
+# it uses the global variables to save the data
+# it overwrites the data.txt file with the new data
+# it is called in the new_game function.
 def save():
-    #saves the game data to data.txt
     global spores, spores_per_harvest, spores_bonus_harvest, spores_per_multiplyer, new_game
     file = open('data.txt', 'w')
     file.write('spores: ' + str(spores) + '\n')
@@ -47,10 +68,20 @@ def save():
     file.close()
     print('game saved successfully')
 
+
+# this function is used to print.txt files and close them
+# it is used in the help command and the license command
 def print_file(file):
     with open(file, 'r') as f:
         print(f.read())
 
+
+# this fuction is used to print the intro to the game
+# and check if the player has a new game or not
+# if the player has a new game it will ask for the name of the farm
+# and save it to the data.txt file
+# if the player does not have a new game it will print the name of the farm
+# it is called at the start of the game
 def intro():
     global new_game, farm_name
     print('welcome to spores.')
@@ -89,6 +120,10 @@ def harvest():
     spores = spores + spores_per_harvest + spores_bonus_harvest * spores_per_multiplyer
     print('harvested spores: ' + str(spores_harvested) + '. total spores: ' + str(spores))
 
+
+# this function is used to print the info about the current game
+# nts create a func to print the info about the saved game
+# this cannot be in a txt file because it is changing
 def info():
     print('spores: ' + str(spores))
     print('spores per harvest: ' + str(spores_per_harvest))
@@ -97,12 +132,14 @@ def info():
     print('farm name: ' + farm_name)
     print('new game: ' + str(new_game))
 
+
+#gets the players input and stores it in the variable "command"
+#then checks i it matches any of the commands
+#if it does, it runs the function associated with that command
+#if it does not, it prints an error message
+#to add a new command, add it to the list of commands useing elif, and create a function for it
 def main():
     while True:
-        #gets the players input and stores it in the variable "command"
-        #then checks i it matches any of the commands
-        #if it does, it runs the function associated with that command
-        #if it does not, it prints an error message
         command = input('$=').lower()
         print()
     
@@ -147,6 +184,11 @@ def main():
         else:
             print(command + ' is not a valid command')
 
+
+#the actual game starts here
+#this loads the game data from the data.txt file
+#it then clears the screen and prints the intro
+#it then calls the main function to start the game
 load()
 clear_screen()
 intro()
