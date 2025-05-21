@@ -2,5 +2,5 @@ spores: 0
 spores per harvest: 1
 spores bonus harvest: 0
 spores per multiplyer: 1
-farm name: liliput
+farm name: liliput farm
 new game: 0

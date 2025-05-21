@@ -30,7 +30,7 @@ def start_new_game():
     spores_per_harvest = 1
     spores_bonus_harvest = 0
     spores_per_multiplyer = 1
-    farm_name = ''
+    farm_name = 'dr mylo\'s farm'
     new_game = True
     save()
     exit()
@@ -91,6 +91,11 @@ def intro():
         while farm_confirmed == False:
             print('please enter the name of your farm')
             farm_name = input('$=')
+            if farm_name == '':
+                print('name is blank, exiting...')
+                time.sleep(1)
+                clear_screen()
+                exit()
             print('is this the correct name? (y/n)')
             confirm = input('$=').lower()
             if confirm == 'y':
@@ -100,8 +105,8 @@ def intro():
             else:
                 print('invalid input')
         print('your farm name is called: ' + farm_name)
-        save()
         new_game = False
+        save()
     else:   
         print('welcome back to your farm: ' + farm_name)
 
@@ -145,9 +150,7 @@ def main():
         print()
     
         if command == 'help':
-            print_file('commanI can't stop laughing, I get an overwhelming sence of joy just knowing that all this annoying painful and crazy stressful shit will just be gone so fast and easy it's painful but the thought is so relieving it bring weight off my shoulders thinking about it it makes me genuinely happy
-[10:28 am]
-ds.txt')
+            print_file('commands.txt')
         elif command == 'intro':
             intro()
         elif command == 'clear':
