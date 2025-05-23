@@ -1,0 +1,17 @@
+Store commands
+====================
+
+help:
+    Prints this menu
+clear:
+    Clears the terminal screen.
+exit:
+    Exits the save menu after saving.
+save:
+    Saves your game data.
+buy:
+    opens the buy menu.
+sell:
+    opens the sell menu.
+inspect:
+    opens the inspect menu.

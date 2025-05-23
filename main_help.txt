@@ -3,8 +3,6 @@ Spores Game Commands
 
 help:
     Prints the help menu.
-intro:
-    Starts the game introduction or welcomes you back to your farm.
 clear:
     Clears the terminal screen.
 harvest:

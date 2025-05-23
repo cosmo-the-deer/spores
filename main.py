@@ -25,6 +25,31 @@ building_give_amount = {'crop': 1, 'scare_crow': 10}
 building_prices = {'crop': 10, 'scare_crow': 100}
 building_amounts = {'crop': 1, 'scare_crow': 1}
 
+def store():
+    print('welcome to the store')
+    print('type exit to exit')
+    while True:
+        print()
+        command = input('$=').lower()
+        print()
+        if command == 'buy':
+            pass
+        elif command == 'sell':
+            pass
+        elif command == 'exit':
+            print('exiting store...')
+            time.sleep(1)
+            return
+        elif command == 'help':
+            print_file('store_help.txt')
+        elif command == 'clear':
+            clear_screen()
+        elif command == 'where am i':
+            print('store')
+        elif command == 'store':
+            print('you are allready in the store')
+        else:
+            print(command + ' is not a valid command')
 
 def calculate_harvest():
     global spores_bonus_harvest, spores_per_multiplyer, spores_per_harvest, building_amounts, buildings, building_give_amount
@@ -36,7 +61,7 @@ def calculate_harvest():
 
 def start_new_game():
 # if you are editing this to make it better please find a way to reload instead of exiting
-# this resets the var and saves it to the data.txt file
+# this resets the game and saves it to the data.txt file
     global spores, spores_per_harvest, spores_bonus_harvest, spores_per_multiplyer, new_game
     spores = 0
     farm_name = 'dr mylo\'s farm'
@@ -147,9 +172,7 @@ def main():
         print()
     
         if command == 'help':
-            print_file('commands.txt')
-        elif command == 'intro':
-            intro()
+            print_file('main_help.txt')
         elif command == 'clear':
             clear_screen()
         elif command == 'harvest':
@@ -183,7 +206,13 @@ def main():
                 clear_screen()
         elif command == 'license':
             print_file('LICENSE')
-
+        elif command == 'store':
+            clear_screen()
+            store()
+            clear_screen()
+        elif command == 'where am i':
+            print('main menu')
+            print()
         else:
             print(command + ' is not a valid command')
 
